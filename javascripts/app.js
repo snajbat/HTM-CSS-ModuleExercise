@@ -52,19 +52,47 @@ function turnRight(rover){
 function moveForward(rover){
   switch(rover.direction){
     case "N":
+    if(rover.y === 0){ break; }
     rover.y --;
     break;
 
     case "W":
+    if(rover.x === 0){ break; }
     rover.x --;
     break;
 
     case "S":
+    if(rover.y === 9){ break; }
     rover.y ++;
     break;
 
     case "E":
+    if(rover.x === 9){ break; }
     rover.x ++;
+    break;
+  }
+  console.log("Coordinates: (" + rover.x + ", " + rover.y + ")")
+}
+function moveBackward(rover){
+  switch(rover.direction){
+    case "N":
+    if(rover.y === 9){ break; }
+    rover.y ++;
+    break;
+
+    case "W":
+    if(rover.x === 9){ break; }
+    rover.x ++;
+    break;
+
+    case "S":
+    if(rover.y === 0){ break; }
+    rover.y --;
+    break;
+
+    case "E":
+    if(rover.x === 0){ break; }
+    rover.x --;
     break;
   }
   console.log("Coordinates: (" + rover.x + ", " + rover.y + ")")
@@ -84,6 +112,11 @@ function commandsList(rover, commands){
 
       case 'f':
       moveForward(rover);
+      rover.travelLog.push("Coordinates: (" + rover.x + ", " + rover.y + ")");
+      break;
+
+      case 'b':
+      moveBackward(rover);
       rover.travelLog.push("Coordinates: (" + rover.x + ", " + rover.y + ")");
       break;
     }
